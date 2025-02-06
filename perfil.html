@@ -180,3 +180,37 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión con GitHub</title>
+  <script src="https://cdn.jsdelivr.net/npm/oauth-js"></script>
+</head>
+<body>
+  <h1>Iniciar sesión con GitHub</h1>
+  <!-- Botón de inicio de sesión -->
+  <button id="github-login">Iniciar sesión con GitHub</button>
+
+  <script>
+    // Definir el client_id que obtuviste de GitHub
+    const clientId = '3ca3551a11538f5b6c097248e18f903606e59f46';  // Tu client_id de GitHub
+    const redirectUri = 'https://luisproxd16.github.io/callback.html';  // Tu URL de redirección
+
+    document.getElementById('github-login').addEventListener('click', function() {
+      // Redirigir a GitHub para la autenticación OAuth
+      window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}`;
+    });
+  </script>
+</body>
+</html>
+
