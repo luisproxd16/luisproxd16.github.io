@@ -15,13 +15,14 @@
             height: 100vh;
             margin: 0;
             padding: 0;
+            flex-direction: column;
         }
 
         .container {
             width: 90%;
             max-width: 800px;
             background-color: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             color: black;
@@ -88,6 +89,29 @@
 
         .scroll-top:hover {
             background-color: darkred;
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .profile-header img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .button {
+                width: 80%;
+            }
+
+            .scroll-top {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
         }
     </style>
 </head>

@@ -17,6 +17,8 @@
             padding: 20px;
             border-radius: 10px;
             display: inline-block;
+            width: 100%;
+            max-width: 500px;
         }
         button {
             background-color: red;
@@ -27,6 +29,7 @@
             font-size: 18px;
             cursor: pointer;
             margin-top: 20px;
+            width: 100%;
         }
         button:hover {
             background-color: darkred;
@@ -39,24 +42,19 @@
     </div>
 
     <script>
-        // Obtener el código de autorización desde la URL
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
 
         if (code) {
-            // Guardar el código en localStorage (o manejarlo como prefieras)
             localStorage.setItem('github_code', code);
-
-            // Mostrar mensaje de éxito
             document.getElementById('content').innerHTML = `
                 <div class="container">
                     <h1>Gracias por iniciar sesión</h1>
                     <p>¡Disfruta de los animes!</p>
-                    <button onclick="window.location.href='perfil.html'">Ir a la página principal</button>
+                    <button onclick="window.location.href='index.html'">Ir a la página principal</button>
                 </div>
             `;
         } else {
-            // Mostrar mensaje de error
             document.getElementById('content').innerHTML = `
                 <h1>Error al iniciar sesión</h1>
                 <p>No se recibió un código de autorización.</p>
@@ -65,7 +63,3 @@
     </script>
 </body>
 </html>
-
-
-
-
