@@ -1,50 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Callback GitHub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procesando inicio de sesión...</title>
 </head>
 <body>
+  <script>
+    // Obtener el código de autorización desde la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
 
-    <h1>Conectando con GitHub...</h1>
-    <p>Por favor, espere mientras se procesa el inicio de sesión...</p>
+    if (code) {
+      // Guardar el código en localStorage (o manejarlo como prefieras)
+      localStorage.setItem('github_code', code);
 
-    <script>
-        // Obtén el código de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        
-        if (code) {
-            // Realiza la solicitud de intercambio de código por token
-            fetch('https://github.com/login/oauth/access_token', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: new URLSearchParams({
-                    client_id: '3ca3551a11538f5b6c097248e18f903606e59f46',
-                    client_secret: 'Ov23liH8n7qWd4aDdshv',
-                    code: code,
-                    redirect_uri: 'https://luisproxd16.github.io/callback.html'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.access_token) {
-                    // El token de acceso ha sido recibido correctamente
-                    localStorage.setItem('access_token', data.access_token);
-                    window.location.href = 'perfil.html'; // Redirige al perfil
-                } else {
-                    console.error('Error al obtener el token de acceso');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-    
+      // Redirigir a la página de perfil o inicio
+      window.location.href = 'https://luisproxd16.github.io/perfil.html';
+    } else {
+      document.body.innerHTML = "<h1>Error al iniciar sesión</h1><p>No se recibió un código de autorización.</p>";
+    }
+  </script>
 </body>
 </html>
-
