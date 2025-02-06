@@ -7,10 +7,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black;  /* Fondo negro */
+            background-color: black;
             margin: 0;
             padding: 0;
-            color: white;  /* Texto en blanco */
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,52 +21,42 @@
         header {
             background-color: #333;
             color: white;
-            padding: 20px 0;  /* Aumenté el padding superior para mayor separación */
+            padding: 20px 0;
             text-align: center;
             position: relative;
             width: 100%;
-            margin-bottom: 20px; /* Reduje el espacio debajo del encabezado */
-            margin-top: 0; /* Subí el encabezado */
         }
 
-        /* Logo en la esquina izquierda */
         .logo {
             position: absolute;
-            top: 20px;
+            top: 10px;
             left: 20px;
-            width: 50px;  /* Ajusta el tamaño del logo */
+            width: 50px;
+            cursor: pointer;
         }
 
-        /* Botón "X" en la esquina derecha */
         .close-button {
             position: absolute;
-            top: 20px;
+            top: 10px;
             right: 20px;
-            font-size: 32px;  /* Tamaño más grande */
-            font-weight: bold;  /* Más gruesa */
-            color: red;  /* Color rojo */
+            font-size: 32px;
+            font-weight: bold;
+            color: red;
             cursor: pointer;
         }
 
         .container {
             width: 80%;
             max-width: 800px;
-            margin: 0 auto;
             background-color: white;
-            padding: 30px; /* Más espacio alrededor del contenido */
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;  /* Centrado de los elementos en columna */
-        }
-
-        .profile-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;  /* Más espacio debajo de la foto */
+            flex-direction: column;
+            color: black;
         }
 
         .profile-header img {
@@ -75,142 +65,71 @@
             height: 150px;
         }
 
-        .profile-header h2 {
-            font-size: 24px;
-            margin: 0;
+        .timer {
+            font-size: 20px;
+            color: #ffcc00;
+            font-weight: bold;
             text-align: center;
         }
 
-        .profile-header p {
-            font-size: 16px;
-            color: #555;
-            text-align: center;
-        }
-
-        .details {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 20px; /* Más separación entre los detalles */
-        }
-
-        .details div {
-            width: 48%;
-        }
-
-        .details h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .details p {
-            font-size: 16px;
-            color: #666;
-        }
-
-        .button {
+        .start-button {
             display: block;
             width: 200px;
-            margin: 20px auto;
             padding: 10px;
-            background-color: #333;
+            background-color: red;
             color: white;
             text-align: center;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 18px;
-        }
-
-        .button:hover {
-            background-color: #555;
-        }
-
-        /* Estilo para el contador */
-        .timer {
-            font-size: 20px;
-            color: #ffcc00;  /* Color dorado */
-            font-weight: bold;
-            text-align: center; /* Centrado del contador */
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <!-- Logo en la esquina izquierda -->
-        <img src="assets/imagenes/logo.png" alt="Logo" class="logo">
+<header>
+    <img src="assets/imagenes/logo.png" alt="Logo" class="logo" onclick="window.location.href='index.html';">
+    <h1>Bienvenido a tu perfil</h1>
+    <div class="close-button" onclick="window.location.href='index.html';">X</div>
+</header>
 
-        <h1>Bienvenido a tu perfil</h1>  <!-- Aseguramos que el título no se junte -->
-
-        <!-- Botón X para volver al inicio -->
-        <div class="close-button" onclick="window.location.href = 'index.html';">X</div>
-    </header>
-
-    <div class="container">
-        <!-- Información del perfil -->
-        <div class="profile-header">
-            <img src="https://via.placeholder.com/150" alt="Foto de perfil">
-        </div>
-        
-        <h2>Juan Pérez</h2>
-        <p>Correo electrónico: juanperez@email.com</p>
-
-        <!-- Contador de tiempo -->
-        <div class="timer" id="timer"></div>
+<div class="container">
+    <div class="profile-header">
+        <img id="profile-pic" src="https://via.placeholder.com/150" alt="Foto de perfil">
     </div>
+    <h2 id="username">Cargando...</h2>
+    <p id="email">Cargando...</p>
+    <div class="timer" id="timer"></div>
+    <button class="start-button" onclick="window.location.href='index.html';">Ir al inicio</button>
+</div>
 
-    <script>
-        // Función para actualizar el contador de tiempo
-        let startTime = Date.now();  // Guarda la hora de inicio
+<script>
+    let startTime = Date.now();
+    function updateTimer() {
+        let elapsed = Date.now() - startTime;
+        let minutes = Math.floor(elapsed / 60000);
+        let seconds = Math.floor((elapsed % 60000) / 1000);
+        document.getElementById("timer").textContent = `Tiempo en página: ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
 
-        function updateTimer() {
-            let elapsed = Date.now() - startTime;  // Calcula el tiempo transcurrido en milisegundos
-            let minutes = Math.floor(elapsed / 60000);  // Convierte a minutos
-            let seconds = Math.floor((elapsed % 60000) / 1000);  // Calcula los segundos restantes
-            document.getElementById("timer").textContent = `Tiempo en página: ${minutes}m ${seconds}s`;  // Muestra el tiempo
-        }
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('token');
 
-        // Actualizar cada 10 segundos
-        setInterval(updateTimer, 10000);  // Actualiza el contador cada 10 segundos
-
-        // Inicializa el contador inmediatamente
-        updateTimer();  // Primer actualización
-    </script>
-
+    if (accessToken) {
+        fetch('https://api.github.com/user', {
+            headers: { Authorization: `token ${accessToken}` }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('username').textContent = data.login;
+            document.getElementById('email').textContent = data.email || 'Correo no disponible';
+            document.getElementById('profile-pic').src = data.avatar_url;
+        })
+        .catch(error => console.error('Error al obtener datos:', error));
+    }
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesión con GitHub</title>
-  <script src="https://cdn.jsdelivr.net/npm/oauth-js"></script>
-</head>
-<body>
-  <h1>Iniciar sesión con GitHub</h1>
-  <!-- Botón de inicio de sesión -->
-  <button id="github-login">Iniciar sesión con GitHub</button>
-
-  <script>
-    // Definir el client_id que obtuviste de GitHub
-    const clientId = '3ca3551a11538f5b6c097248e18f903606e59f46';  // Tu client_id de GitHub
-    const redirectUri = 'https://luisproxd16.github.io/callback.html';  // Tu URL de redirección
-
-    document.getElementById('github-login').addEventListener('click', function() {
-      // Redirigir a GitHub para la autenticación OAuth
-      window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}`;
-    });
-  </script>
-</body>
-</html>
-
