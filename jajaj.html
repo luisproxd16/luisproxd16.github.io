@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <style>
+        /* Fondo negro con texto blanco */
+        body {
+            background-color: black;
+            color: white; /* Hace que el texto sea visible */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Para que el fondo cubra toda la altura de la ventana */
+        }
+
+        h1, p {
+            text-align: center; /* Centra el texto */
+            padding: 20px;
+        }
+
+        /* Estilo para un fondo con imagen (opcional) */
+        /* body {
+            background-image: url('ruta/a/tu/imagen.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        } */
+    </style>
+</head>
+<body>
+    <h1>
+    <p>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo con Logo Fijo</title>
+  <style>
+    /* Fijar el logo en la esquina superior izquierda */
+    #logo {
+      position: fixed; /* Se mantiene en la misma posición en la ventana */
+      top: 0;          /* Alineado al borde superior */
+      left: 0;         /* Alineado al borde izquierdo */
+      margin: 10px;    /* Espacio para separarlo de los bordes */
+      z-index: 1000;   /* Asegura que el logo quede por encima de otros elementos */
+    }
+    
+    /* Ejemplo de estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Otros estilos para la página */
+    .content {
+      margin-top: 100px; /* Para evitar que el contenido quede tapado por el logo */
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenedor del logo -->
+  <div id="logo">
+    <img src="assets/imagenes/logo.png" alt="Logo">
+  </div>
+  
+  <!-- Contenido de la página -->
+  <div class="content">
+    <h1>
+    <p>
+  </div>
+</body>
+</html>
+
+
+
+<!-- Barra de navegación -->
+<div class="navbar">
+    <!-- Cuadro de búsqueda en el medio -->
+    <div class="search-container">
+        <input type="text" placeholder="Buscar..." class="search-box">
+    </div>
+
+    <!-- Botón de hamburguesa (sin fondo) para mostrar/ocultar las opciones -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- Menú -->
+<div class="menu" id="menu">
+    <a href="index.html" class="inicio">Inicio</a>
+    <a href="anime.html" class="acerca">Acerca</a>
+    <a href="anime.html" class="encuentranos">Encuéntranos</a>
+</div>
+
+ 
+ 
+ 
+
+<style>
+    /* Estilo para la barra de navegación */
+    .navbar {
+        position: fixed; /* Fija la barra en la parte superior */
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between; /* Espacio entre los elementos */
+        align-items: center;
+        z-index: 1000;
+        background: transparent; /* Fondo transparente */
+    }
+
+    /* Contenedor del cuadro de búsqueda en el medio */
+    .search-container {
+        flex-grow: 1; /* Toma el espacio disponible */
+        display: flex;
+        justify-content: center; /* Centra el cuadro de búsqueda */
+    }
+
+    .search-box {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 50%; /* Ancho del cuadro de búsqueda */
+        border: 2px solid #ccc;
+        background-color: white; /* Fondo blanco para el cuadro de búsqueda */
+        color: black; /* Color de texto negro en el cuadro de búsqueda */
+    }
+
+    /* Botón de hamburguesa (sin fondo) */
+    .menu-toggle {
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        background: none;  /* Sin fondo */
+        border: none;      /* Sin borde */
+        padding: 0;        /* Sin padding */
+    }
+
+    /* Estilo para el menú */
+    .menu {
+        display: none; /* Inicialmente oculto */
+        background-color: transparent; /* Fondo transparente */
+        padding: 10px;
+        position: absolute; /* Lo posiciona absolutamente */
+        top: 50px; /* Ajusta la posición del menú, más cerca de la parte superior */
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Estilo para los enlaces del menú */
+    .menu a {
+        text-decoration: none;
+        padding: 5px 10px; /* Ajustado para que dependa del tamaño del texto */
+        font-weight: bold;
+        display: inline-block; /* Hace que los enlaces no se estiren a todo el ancho */
+        margin: 5px 0;
+        border-radius: 5px;
+        font-size: 14px; /* Tamaño de la fuente más pequeño */
+        color: white; /* Color de letra blanco */
+    }
+
+    /* Colores de fondo para las opciones */
+    .menu .inicio {
+        background-color: red; /* Fondo rojo para 'Inicio' */
+    }
+
+    .menu .acerca {
+        background-color: blue; /* Fondo azul para 'Acerca' */
+    }
+
+    .menu .encuentranos {
+        background-color: violet; /* Fondo amarillo para 'Encuéntranos' */
+    }
+
+    /* Efecto al pasar el mouse sobre los enlaces */
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Fondo con transparencia al pasar el mouse */
+    }
+
+    /* Estilo para el banner */
+    .banner {
+        width: 80%; /* Ancho reducido */
+        height: 250px; /* Altura aumentada */
+        background-image: url('assets/imagenes/banner.png'); /* Ruta a la imagen */
+        background-size: cover; /* Asegura que la imagen cubra todo el espacio */
+        background-position: center; /* Centra la imagen */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;  /* Color de la letra en el banner */
+        font-size: 32px; /* Tamaño de la letra ajustado */
+        font-weight: bold;
+        border-radius: 20px; /* Esquinas redondeadas */
+        margin: 0 auto; /* Centra el banner horizontalmente */
+        position: relative;
+        margin-top: 60px; /* Evita que el banner se solape con la barra de navegación */
+    }
+</style>
+
+<script>
+    // Función para mostrar/ocultar el menú
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        if (menu.style.display === 'none' || menu.style.display === '') {
+            menu.style.display = 'block'; // Muestra el menú
+        } else {
+            menu.style.display = 'none'; // Oculta el menú
+        }
+    }
+</script>
