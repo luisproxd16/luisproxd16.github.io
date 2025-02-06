@@ -167,144 +167,152 @@
 
 <!-- Carrusel de imágenes -->
 <div class="carousel-container">
+  <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
   <div class="carousel-slide">
-    <!-- Imagen 1 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen1.png" alt="Imagen 1">
-    <a href="gg.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 2 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen2.jpg" alt="Imagen 2">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-  <!-- Imagen 3 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen3.jpg" alt="Imagen 3">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-   <!-- Imagen 4 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen4.jpg" alt="Imagen 4">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-  <!-- Imagen 5 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen5.jpg" alt="Imagen 5">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 6 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen6.jpg" alt="Imagen 6">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-   <!-- Imagen 7 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen7.jpg" alt="Imagen 7">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 8 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen8.jpg" alt="Imagen 8">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 9 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen9.jpg" alt="Imagen 9">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 10 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen10.jpg" alt="Imagen 10">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 11 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen11.jpg" alt="Imagen 11">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 12 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen12.jpg" alt="Imagen 12">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-   <!-- Imagen 13 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen13.jpg" alt="Imagen 13">
-    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
-
-    <!-- Imagen 14 -->
-<div class="carousel-item">
-    <img src="assets/imagenes/imagen14.png" alt="Imagen 14">
-    <a href="gg.html" class="btn-ver-ahora">Ver ahora</a>
-</div>
+    <!-- Imágenes (ahora 14 elementos) -->
+    <div class="carousel-item"><img src="assets/imagenes/imagen1.png" alt="Imagen 1"><a href="gg.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen2.jpg" alt="Imagen 2"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen3.jpg" alt="Imagen 3"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen4.jpg" alt="Imagen 4"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen5.jpg" alt="Imagen 5"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen6.jpg" alt="Imagen 6"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen7.jpg" alt="Imagen 7"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen8.jpg" alt="Imagen 8"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen9.jpg" alt="Imagen 9"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen10.jpg" alt="Imagen 10"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen11.jpg" alt="Imagen 11"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen12.jpg" alt="Imagen 12"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen13.jpg" alt="Imagen 13"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
+    <div class="carousel-item"><img src="assets/imagenes/imagen14.jpg" alt="Imagen 14"><a href="anime.html" class="btn-ver-ahora">Ver ahora</a></div>
   </div>
+  <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
 </div>
 
 <style>
-  /* Contenedor del carrusel con fondo rosado claro y posición ajustable */
   .carousel-container {
-    width: 1200px;
-    margin: 50px auto; /* Ajusta este valor para mover el cuadro verticalmente */
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
     overflow: hidden;
-    border: 2px solid #ccc;
+    background-color: #ffb6c1;
     border-radius: 10px;
-    background-color: #ffb6c1; /* Fondo rosado claro */
+    position: relative;
+    touch-action: pan-y;
   }
 
-  /* La fila del carrusel: ancho total calculado para 14 ítems */
   .carousel-slide {
     display: flex;
-    width: 3360px; /* 14 imágenes x 240px cada una */
     transition: transform 0.5s ease-in-out;
   }
 
-  /* Cada ítem ocupa 240px */
   .carousel-item {
-    width: 240px;
+    min-width: 240px;
     padding: 5px;
     box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
   }
 
   .carousel-item img {
     width: 100%;
-    display: block;
     border-radius: 10px;
-    border: 2px solid #000; /* Marco de 2px en color negro */
+    border: 2px solid #000;
   }
 
-  /* Botón "Ver ahora" ajustado al tamaño de la letra */
   .btn-ver-ahora {
     display: inline-block;
     margin: 10px auto 0;
-    background-color: green;  /* Fondo verde */
+    background-color: green;
     color: white;
     font-size: 1em;
     padding: 0.3em 0.6em;
     border-radius: 5px;
     text-decoration: none;
-    text-align: center;
   }
 
-  .btn-ver-ahora:hover {
-    background-color: darkgreen;
+  /* Estilo de los botones de navegación */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 2em;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    transform: translateY(-50%);
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  /* Media query para pantallas más pequeñas */
+  @media screen and (max-width: 768px) {
+    .carousel-item {
+      min-width: 200px;
+    }
   }
 </style>
+
+<script>
+  let slide = document.querySelector('.carousel-slide');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slide.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - slide.offsetLeft;
+    scrollLeft = slide.scrollLeft;
+  });
+
+  slide.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  slide.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  slide.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slide.offsetLeft;
+    const walk = (x - startX) * 2;
+    slide.scrollLeft = scrollLeft - walk;
+  });
+
+  // Soporte táctil
+  slide.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].pageX;
+    scrollLeft = slide.scrollLeft;
+  });
+
+  slide.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 2;
+    slide.scrollLeft = scrollLeft - walk;
+  });
+
+  // Función para mover las diapositivas
+  function moveSlide(direction) {
+    const totalWidth = slide.scrollWidth;
+    const visibleWidth = slide.offsetWidth;
+    const currentPosition = slide.scrollLeft;
+    const newPosition = currentPosition + direction * visibleWidth;
+
+    if (newPosition >= 0 && newPosition <= totalWidth - visibleWidth) {
+      slide.scrollLeft = newPosition;
+    }
+  }
+</script>
+
 
 <script>
   // Variables del carrusel
