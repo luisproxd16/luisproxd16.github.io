@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;  /* Fondo negro */
+            margin: 0;
+            padding: 0;
+            color: white;  /* Texto en blanco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;  /* Aumenté el padding superior para mayor separación */
+            text-align: center;
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px; /* Reduje el espacio debajo del encabezado */
+            margin-top: 0; /* Subí el encabezado */
+        }
+
+        /* Logo en la esquina izquierda */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;  /* Ajusta el tamaño del logo */
+        }
+
+        /* Botón "X" en la esquina derecha */
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;  /* Tamaño más grande */
+            font-weight: bold;  /* Más gruesa */
+            color: red;  /* Color rojo */
+            cursor: pointer;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px; /* Más espacio alrededor del contenido */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;  /* Centrado de los elementos en columna */
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;  /* Más espacio debajo de la foto */
+        }
+
+        .profile-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .profile-header h2 {
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .profile-header p {
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px; /* Más separación entre los detalles */
+        }
+
+        .details div {
+            width: 48%;
+        }
+
+        .details h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .details p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        /* Estilo para el contador */
+        .timer {
+            font-size: 20px;
+            color: #ffcc00;  /* Color dorado */
+            font-weight: bold;
+            text-align: center; /* Centrado del contador */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Logo en la esquina izquierda -->
+        <img src="assets/imagenes/logo.png" alt="Logo" class="logo">
+
+        <h1>Bienvenido a tu perfil</h1>  <!-- Aseguramos que el título no se junte -->
+
+        <!-- Botón X para volver al inicio -->
+        <div class="close-button" onclick="window.location.href = 'index.html';">X</div>
+    </header>
+
+    <div class="container">
+        <!-- Información del perfil -->
+        <div class="profile-header">
+            <img src="https://via.placeholder.com/150" alt="Foto de perfil">
+        </div>
+        
+        <h2>Juan Pérez</h2>
+        <p>Correo electrónico: juanperez@email.com</p>
+
+        <!-- Contador de tiempo -->
+        <div class="timer" id="timer"></div>
+    </div>
+
+    <script>
+        // Función para actualizar el contador de tiempo
+        let startTime = Date.now();  // Guarda la hora de inicio
+
+        function updateTimer() {
+            let elapsed = Date.now() - startTime;  // Calcula el tiempo transcurrido en milisegundos
+            let minutes = Math.floor(elapsed / 60000);  // Convierte a minutos
+            let seconds = Math.floor((elapsed % 60000) / 1000);  // Calcula los segundos restantes
+            document.getElementById("timer").textContent = `Tiempo en página: ${minutes}m ${seconds}s`;  // Muestra el tiempo
+        }
+
+        // Actualizar cada 10 segundos
+        setInterval(updateTimer, 10000);  // Actualiza el contador cada 10 segundos
+
+        // Inicializa el contador inmediatamente
+        updateTimer();  // Primer actualización
+    </script>
+
+</body>
+</html>

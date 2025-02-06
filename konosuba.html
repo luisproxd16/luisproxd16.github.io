@@ -222,3 +222,491 @@
         }
     }
 </script>
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <style>
+        /* Estilos globales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 50%;
+            border: 2px solid #ccc;
+            background-color: white;
+            color: black;
+        }
+
+        .menu-toggle {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu {
+            display: none;
+            background-color: transparent;
+            padding: 10px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .menu .inicio {
+            background-color: red;
+        }
+
+        .menu .acerca {
+            background-color: blue;
+        }
+
+        .menu .encuentranos {
+            background-color: violet;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Logo fijo en la esquina */
+        #logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            margin: 10px;
+            z-index: 1000;
+        }
+
+        /* Contenido */
+        .content {
+            margin-top: 150px; /* Ajustar espacio para el video */
+            text-align: center;
+        }
+
+        /* Estilo de la imagen ajustable */
+        .contenedor-imagen {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 320px;
+            height: 400px;
+            background-image: url('assets/imagenes/foto.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        /* Video */
+        #video-container {
+            margin: 0 auto;
+            width: 640px;
+            height: 360px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .buttons button {
+            padding: 12px;
+            margin: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        /* Botones de videos */
+        .buttons button:nth-child(1) { background-color: #ff4d4d; }
+        .buttons button:nth-child(2) { background-color: #ff9933; }
+        .buttons button:nth-child(3) { background-color: #ffd633; }
+        .buttons button:nth-child(4) { background-color: #33cc33; }
+        .buttons button:nth-child(5) { background-color: #33cccc; }
+        .buttons button:nth-child(6) { background-color: #3399ff; }
+        .buttons button:nth-child(7) { background-color: #9966ff; }
+        .buttons button:nth-child(8) { background-color: #ff66b3; }
+        .buttons button:nth-child(9) { background-color: #ff5050; }
+        .buttons button:nth-child(10) { background-color: #808080; }
+        .buttons button:nth-child(11) { background-color: #4d4d4d; }
+
+        .buttons button:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            .search-box {
+                width: 70%;
+            }
+
+            .contenedor-imagen {
+                width: 250px;
+                height: 300px;
+            }
+
+            #video-container {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="search-container">
+            <input type="text" placeholder="Buscar..." class="search-box">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </div>
+
+    <!-- Menú -->
+    <div class="menu" id="menu">
+        <a href="index.html" class="inicio">Inicio</a>
+        <a href="anime.html" class="acerca">Acerca</a>
+        <a href="anime.html" class="encuentranos">Encuéntranos</a>
+    </div>
+
+    <!-- Logo fijo -->
+    <div id="logo">
+        <img src="assets/imagenes/logo.png" alt="Logo">
+    </div>
+
+    <!-- Contenido -->
+    <div class="content">
+        <h1>Mi Página de Videos</h1>
+        <div id="video-container">
+            <iframe id="video-frame" src="https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="cambiarVideo(1)">Video 1</button>
+        <button onclick="cambiarVideo(2)">Video 2</button>
+        <button onclick="cambiarVideo(3)">Video 3</button>
+        <button onclick="cambiarVideo(4)">Video 4</button>
+        <button onclick="cambiarVideo(5)">Video 5</button>
+        <button onclick="cambiarVideo(6)">Video 6</button>
+        <button onclick="cambiarVideo(7)">Video 7</button>
+        <button onclick="cambiarVideo(8)">Video 8</button>
+        <button onclick="cambiarVideo(9)">Video 9</button>
+        <button onclick="cambiarVideo(10)">Video 10</button>
+        <button onclick="cambiarVideo(11)">_Ova_ 1</button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function cambiarVideo(num) {
+            const videos = [
+                "https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE",
+                "https://mega.nz/embed/6y4kFDqI#xxFEF-dBaWnSDWDud7navj9dqnnHhQ5qkDz-fBIrSU8",
+                // Agrega más enlaces de video aquí
+            ];
+            document.getElementById('video-frame').src = videos[num - 1];
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <style>
+        /* Estilos globales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 50%;
+            border: 2px solid #ccc;
+            background-color: white;
+            color: black;
+        }
+
+        .menu-toggle {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu {
+            display: none;
+            background-color: transparent;
+            padding: 10px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .menu .inicio {
+            background-color: red;
+        }
+
+        .menu .acerca {
+            background-color: blue;
+        }
+
+        .menu .encuentranos {
+            background-color: violet;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Logo fijo en la esquina */
+        #logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            margin: 10px;
+            z-index: 1000;
+        }
+
+        /* Contenido */
+        .content {
+            margin-top: 150px; /* Ajustar espacio para el video */
+            text-align: center;
+        }
+
+        /* Estilo de la imagen ajustable */
+        .contenedor-imagen {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 320px;
+            height: 400px;
+            background-image: url('assets/imagenes/foto.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        /* Video */
+        #video-container {
+            margin: 0 auto;
+            width: 640px;
+            height: 360px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .buttons button {
+            padding: 12px;
+            margin: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        /* Botones de videos */
+        .buttons button:nth-child(1) { background-color: #ff4d4d; }
+        .buttons button:nth-child(2) { background-color: #ff9933; }
+        .buttons button:nth-child(3) { background-color: #ffd633; }
+        .buttons button:nth-child(4) { background-color: #33cc33; }
+        .buttons button:nth-child(5) { background-color: #33cccc; }
+        .buttons button:nth-child(6) { background-color: #3399ff; }
+        .buttons button:nth-child(7) { background-color: #9966ff; }
+        .buttons button:nth-child(8) { background-color: #ff66b3; }
+        .buttons button:nth-child(9) { background-color: #ff5050; }
+        .buttons button:nth-child(10) { background-color: #808080; }
+        .buttons button:nth-child(11) { background-color: #4d4d4d; }
+
+        .buttons button:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            .search-box {
+                width: 70%;
+            }
+
+            .contenedor-imagen {
+                width: 250px;
+                height: 300px;
+            }
+
+            #video-container {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="search-container">
+            <input type="text" placeholder="Buscar..." class="search-box">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </div>
+
+    <!-- Menú -->
+    <div class="menu" id="menu">
+        <a href="index.html" class="inicio">Inicio</a>
+        <a href="anime.html" class="acerca">Acerca</a>
+        <a href="anime.html" class="encuentranos">Encuéntranos</a>
+    </div>
+
+    <!-- Logo fijo -->
+    <div id="logo">
+        <img src="assets/imagenes/logo.png" alt="Logo">
+    </div>
+
+    <!-- Contenido -->
+    <div class="content">
+        <h1>Mi Página de Videos</h1>
+        <div id="video-container">
+            <iframe id="video-frame" src="https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="cambiarVideo(1)">Video 1</button>
+        <button onclick="cambiarVideo(2)">Video 2</button>
+        <button onclick="cambiarVideo(3)">Video 3</button>
+        <button onclick="cambiarVideo(4)">Video 4</button>
+        <button onclick="cambiarVideo(5)">Video 5</button>
+        <button onclick="cambiarVideo(6)">Video 6</button>
+        <button onclick="cambiarVideo(7)">Video 7</button>
+        <button onclick="cambiarVideo(8)">Video 8</button>
+        <button onclick="cambiarVideo(9)">Video 9</button>
+        <button onclick="cambiarVideo(10)">Video 10</button>
+        <button onclick="cambiarVideo(11)">_Ova_ 1</button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function cambiarVideo(num) {
+            const videos = [
+                "https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE",
+                "https://mega.nz/embed/6y4kFDqI#xxFEF-dBaWnSDWDud7navj9dqnnHhQ5qkDz-fBIrSU8",
+                // Agrega más enlaces de video aquí
+            ];
+            document.getElementById('video-frame').src = videos[num - 1];
+        }
+    </script>
+</body>
+</html>
