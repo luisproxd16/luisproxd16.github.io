@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página</title>
+    <style>
+        body {
+            background-color: black;
+            color: white; /* Para que el texto sea visible */
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <p></p>
+</body>
+</html>
+
+<img src="assets/imagenes/logo.png" alt="Mi Logo">
+
+
+<!-- Barra de navegación -->
+<div class="navbar">
+    <!-- Cuadro de búsqueda en el medio -->
+    <div class="search-container">
+        <input type="text" placeholder="Buscar..." class="search-box">
+    </div>
+
+    <!-- Botón de hamburguesa (sin fondo) para mostrar/ocultar las opciones -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- Menú -->
+<div class="menu" id="menu">
+    <a href="index.html" class="inicio">Inicio</a>
+    <a href="anime.html" class="acerca">Acerca</a>
+    <a href="anime.html" class="encuentranos">Encuéntranos</a>
+</div>
+
+<!-- Banner -->
+<div class="banner">
+    <p>Bienvenido a mi página</p>
+</div>
+
+<style>
+    /* Estilo para la barra de navegación */
+    .navbar {
+        position: fixed; /* Fija la barra en la parte superior */
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between; /* Espacio entre los elementos */
+        align-items: center;
+        z-index: 1000;
+        background: transparent; /* Fondo transparente */
+    }
+
+    /* Contenedor del cuadro de búsqueda en el medio */
+    .search-container {
+        flex-grow: 1; /* Toma el espacio disponible */
+        display: flex;
+        justify-content: center; /* Centra el cuadro de búsqueda */
+    }
+
+    .search-box {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 50%; /* Ancho del cuadro de búsqueda */
+        border: 2px solid #ccc;
+        background-color: white; /* Fondo blanco para el cuadro de búsqueda */
+        color: black; /* Color de texto negro en el cuadro de búsqueda */
+    }
+
+    /* Botón de hamburguesa (sin fondo) */
+    .menu-toggle {
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        background: none;  /* Sin fondo */
+        border: none;      /* Sin borde */
+        padding: 0;        /* Sin padding */
+    }
+
+    /* Estilo para el menú */
+    .menu {
+        display: none; /* Inicialmente oculto */
+        background-color: transparent; /* Fondo transparente */
+        padding: 10px;
+        position: absolute; /* Lo posiciona absolutamente */
+        top: 50px; /* Ajusta la posición del menú, más cerca de la parte superior */
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Estilo para los enlaces del menú */
+    .menu a {
+        text-decoration: none;
+        padding: 5px 10px; /* Ajustado para que dependa del tamaño del texto */
+        font-weight: bold;
+        display: inline-block; /* Hace que los enlaces no se estiren a todo el ancho */
+        margin: 5px 0;
+        border-radius: 5px;
+        font-size: 14px; /* Tamaño de la fuente más pequeño */
+        color: white; /* Color de letra blanco */
+    }
+
+    /* Colores de fondo para las opciones */
+    .menu .inicio {
+        background-color: red; /* Fondo rojo para 'Inicio' */
+    }
+
+    .menu .acerca {
+        background-color: blue; /* Fondo azul para 'Acerca' */
+    }
+
+    .menu .encuentranos {
+        background-color: violet; /* Fondo amarillo para 'Encuéntranos' */
+    }
+
+    /* Efecto al pasar el mouse sobre los enlaces */
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Fondo con transparencia al pasar el mouse */
+    }
+
+    /* Estilo para el banner */
+    .banner {
+        width: 80%; /* Ancho reducido */
+        height: 250px; /* Altura aumentada */
+        background-image: url('assets/imagenes/banner.png'); /* Ruta a la imagen */
+        background-size: cover; /* Asegura que la imagen cubra todo el espacio */
+        background-position: center; /* Centra la imagen */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;  /* Color de la letra en el banner */
+        font-size: 32px; /* Tamaño de la letra ajustado */
+        font-weight: bold;
+        border-radius: 20px; /* Esquinas redondeadas */
+        margin: 0 auto; /* Centra el banner horizontalmente */
+        position: relative;
+        margin-top: 60px; /* Evita que el banner se solape con la barra de navegación */
+    }
+</style>
+
+<script>
+    // Función para mostrar/ocultar el menú
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        if (menu.style.display === 'none' || menu.style.display === '') {
+            menu.style.display = 'block'; // Muestra el menú
+        } else {
+            menu.style.display = 'none'; // Oculta el menú
+        }
+    }
+</script>
+
+<!-- Título del carrusel -->
+<h2 style="text-align: center; margin: 20px 0; font-family: Arial, sans-serif;">
+  Animes en Emisión
+</h2>
+
+<!-- Carrusel de imágenes -->
+<div class="carousel-container">
+  <div class="carousel-slide">
+    <!-- Imagen 1 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen1.png" alt="Imagen 1">
+    <a href="gg.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 2 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen2.jpg" alt="Imagen 2">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+  <!-- Imagen 3 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen3.jpg" alt="Imagen 3">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+   <!-- Imagen 4 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen4.jpg" alt="Imagen 4">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+  <!-- Imagen 5 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen5.jpg" alt="Imagen 5">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 6 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen6.jpg" alt="Imagen 6">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+   <!-- Imagen 7 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen7.jpg" alt="Imagen 7">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 8 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen8.jpg" alt="Imagen 8">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 9 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen9.jpg" alt="Imagen 9">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 10 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen10.jpg" alt="Imagen 10">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 11 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen11.jpg" alt="Imagen 11">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 12 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen12.jpg" alt="Imagen 12">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+   <!-- Imagen 13 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen13.jpg" alt="Imagen 13">
+    <a href="anime.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+
+    <!-- Imagen 14 -->
+<div class="carousel-item">
+    <img src="assets/imagenes/imagen14.png" alt="Imagen 14">
+    <a href="gg.html" class="btn-ver-ahora">Ver ahora</a>
+</div>
+  </div>
+</div>
+
+<style>
+  /* Contenedor del carrusel con fondo rosado claro y posición ajustable */
+  .carousel-container {
+    width: 1200px;
+    margin: 50px auto; /* Ajusta este valor para mover el cuadro verticalmente */
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffb6c1; /* Fondo rosado claro */
+  }
+
+  /* La fila del carrusel: ancho total calculado para 14 ítems */
+  .carousel-slide {
+    display: flex;
+    width: 3360px; /* 14 imágenes x 240px cada una */
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* Cada ítem ocupa 240px */
+  .carousel-item {
+    width: 240px;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    border: 2px solid #000; /* Marco de 2px en color negro */
+  }
+
+  /* Botón "Ver ahora" ajustado al tamaño de la letra */
+  .btn-ver-ahora {
+    display: inline-block;
+    margin: 10px auto 0;
+    background-color: green;  /* Fondo verde */
+    color: white;
+    font-size: 1em;
+    padding: 0.3em 0.6em;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .btn-ver-ahora:hover {
+    background-color: darkgreen;
+  }
+</style>
+
+<script>
+  // Variables del carrusel
+  let currentIndex = 0;
+  const totalItems = 14;   // Total de imágenes
+  const itemsPerSlide = 5;   // Se muestran 5 imágenes a la vez
+  const shiftPx = 240;     // Cada ítem tiene 240px de ancho
+
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % (totalItems - itemsPerSlide + 1);
+    document.querySelector('.carousel-slide').style.transform = `translateX(-${currentIndex * shiftPx}px)`;
+  }
+
+  function showPreviousSlide() {
+    currentIndex = (currentIndex - 1 + (totalItems - itemsPerSlide + 1)) % (totalItems - itemsPerSlide + 1);
+    document.querySelector('.carousel-slide').style.transform = `translateX(-${currentIndex * shiftPx}px)`;
+  }
+
+  // Desplazamiento automático cada 15 segundos
+  setInterval(showNextSlide, 15000);
+
+  // Desplazamiento con la rueda del mouse
+  const carouselContainer = document.querySelector('.carousel-container');
+  carouselContainer.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    if (e.deltaY > 0) {
+      showNextSlide();
+    } else {
+      showPreviousSlide();
+    }
+  });
+</script>
