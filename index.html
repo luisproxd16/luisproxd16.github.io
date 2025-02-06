@@ -37,6 +37,7 @@
     <a href="index.html" class="inicio">Inicio</a>
     <a href="anime.html" class="acerca">Acerca</a>
     <a href="anime.html" class="encuentranos">Encuéntranos</a>
+    <a href="perfil.html" class="perfil">Perfil</a> <!-- Nuevo botón de perfil -->
 </div>
 
 <!-- Banner -->
@@ -47,52 +48,52 @@
 <style>
     /* Estilo para la barra de navegación */
     .navbar {
-        position: fixed; /* Fija la barra en la parte superior */
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         padding: 10px;
         display: flex;
-        justify-content: space-between; /* Espacio entre los elementos */
+        justify-content: space-between;
         align-items: center;
         z-index: 1000;
-        background: transparent; /* Fondo transparente */
+        background: transparent;
     }
 
     /* Contenedor del cuadro de búsqueda en el medio */
     .search-container {
-        flex-grow: 1; /* Toma el espacio disponible */
+        flex-grow: 1;
         display: flex;
-        justify-content: center; /* Centra el cuadro de búsqueda */
+        justify-content: center;
     }
 
     .search-box {
         padding: 8px;
         font-size: 16px;
         border-radius: 5px;
-        width: 50%; /* Ancho del cuadro de búsqueda */
+        width: 50%;
         border: 2px solid #ccc;
-        background-color: white; /* Fondo blanco para el cuadro de búsqueda */
-        color: black; /* Color de texto negro en el cuadro de búsqueda */
+        background-color: white;
+        color: black;
     }
 
-    /* Botón de hamburguesa (sin fondo) */
+    /* Botón de hamburguesa */
     .menu-toggle {
         font-size: 30px;
         color: white;
         cursor: pointer;
-        background: none;  /* Sin fondo */
-        border: none;      /* Sin borde */
-        padding: 0;        /* Sin padding */
+        background: none;
+        border: none;
+        padding: 0;
     }
 
     /* Estilo para el menú */
     .menu {
-        display: none; /* Inicialmente oculto */
-        background-color: transparent; /* Fondo transparente */
+        display: none;
+        background-color: transparent;
         padding: 10px;
-        position: absolute; /* Lo posiciona absolutamente */
-        top: 50px; /* Ajusta la posición del menú, más cerca de la parte superior */
+        position: absolute;
+        top: 50px;
         left: 0;
         width: 100%;
         text-align: center;
@@ -101,54 +102,58 @@
     /* Estilo para los enlaces del menú */
     .menu a {
         text-decoration: none;
-        padding: 5px 10px; /* Ajustado para que dependa del tamaño del texto */
+        padding: 5px 10px;
         font-weight: bold;
-        display: inline-block; /* Hace que los enlaces no se estiren a todo el ancho */
+        display: inline-block;
         margin: 5px 0;
         border-radius: 5px;
-        font-size: 14px; /* Tamaño de la fuente más pequeño */
-        color: white; /* Color de letra blanco */
+        font-size: 14px;
+        color: white;
     }
 
     /* Colores de fondo para las opciones */
-    .menu .inicio {
-        background-color: red; /* Fondo rojo para 'Inicio' */
-    }
+    .menu .inicio { background-color: red; }
+    .menu .acerca { background-color: blue; }
+    .menu .encuentranos { background-color: violet; }
+    .menu .perfil { background-color: green; } /* Color verde para "Perfil" */
 
-    .menu .acerca {
-        background-color: blue; /* Fondo azul para 'Acerca' */
-    }
-
-    .menu .encuentranos {
-        background-color: violet; /* Fondo amarillo para 'Encuéntranos' */
-    }
-
-    /* Efecto al pasar el mouse sobre los enlaces */
+    /* Efecto al pasar el mouse */
     .menu a:hover {
-        background-color: rgba(255, 255, 255, 0.2); /* Fondo con transparencia al pasar el mouse */
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Estilo para el banner */
     .banner {
-        width: 80%; /* Ancho reducido */
-        height: 250px; /* Altura aumentada */
-        background-image: url('assets/imagenes/banner.png'); /* Ruta a la imagen */
-        background-size: cover; /* Asegura que la imagen cubra todo el espacio */
-        background-position: center; /* Centra la imagen */
+        width: 80%;
+        height: 250px;
+        background-image: url('assets/imagenes/banner.png');
+        background-size: cover;
+        background-position: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;  /* Color de la letra en el banner */
-        font-size: 32px; /* Tamaño de la letra ajustado */
+        color: white;
+        font-size: 32px;
         font-weight: bold;
-        border-radius: 20px; /* Esquinas redondeadas */
-        margin: 0 auto; /* Centra el banner horizontalmente */
+        border-radius: 20px;
+        margin: 0 auto;
         position: relative;
-        margin-top: 60px; /* Evita que el banner se solape con la barra de navegación */
+        margin-top: 60px;
     }
 </style>
 
 <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+
+
+
+
+
     // Función para mostrar/ocultar el menú
     function toggleMenu() {
         const menu = document.getElementById('menu');
