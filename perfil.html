@@ -7,215 +7,164 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
+            background-color: #181818;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
             padding: 0;
-            flex-direction: column;
         }
-
-        .container {
-            width: 90%;
-            max-width: 800px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: black;
-            text-align: center;
+        
+        nav {
+            display: flex;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 10px 20px;
         }
-
-        .profile-header img {
+        
+        nav img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        nav span {
+            color: yellow;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav input {
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .profile-btn {
+            background-color: #ff4da6;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-btn img {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
+            margin-left: 10px;
+        }
+        
+        .container {
+            display: flex;
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+        }
+        
+        .profile-image img {
+            border-radius: 15px;
             width: 150px;
             height: 150px;
             object-fit: cover;
-            margin-bottom: 20px;
+            border: 4px solid #ff4081;
         }
-
-        .profile-header h2, .profile-header p {
-            margin: 5px 0;
+        
+        .profile-info {
+            margin-left: 20px;
+            flex: 1;
         }
-
-        .timer {
-            font-size: 18px;
-            color: #ffcc00;
-            margin-top: 20px;
-        }
-
-        .button {
+        
+        .status {
+            background-color: #ff4081;
+            padding: 5px 10px;
+            border-radius: 10px;
             display: inline-block;
-            width: 200px;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 18px;
+        }
+        
+        .button {
+            background-color: transparent;
+            border: 2px solid #ff4081;
+            color: #ff4081;
+            padding: 10px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
         }
-
-        .start-button {
-            background-color: red;
-            color: white;
-            display: none;
-        }
-
-        .login-button {
-            background-color: #24292f;
+        
+        .button:hover {
+            background-color: #ff4081;
             color: white;
         }
-
-        /* Estilo del botón flotante */
-        .scroll-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            line-height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-        }
-
-        .scroll-top:hover {
-            background-color: darkred;
-        }
-
-        /* Ajustes para móviles */
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .profile-header img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .button {
-                width: 80%;
-            }
-
-            .scroll-top {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
+        
+        .stats span {
+            color: #ff4081;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <h1>Bienvenido a tu perfil</h1>
-    </header>
-
-    <div class="profile-header">
-        <img id="profile-pic" src="https://via.placeholder.com/150" alt="Foto de perfil">
-        <h2 id="username">Cargando...</h2>
-        <p id="email">Cargando...</p>
+    <nav>
+        <img src="assets/imagenes/logo.png" alt="Logo">
+        <span>HanabiCine</span>
+        <input type="text" placeholder="Type Something">
+        <div style="flex-grow: 1;"></div>
+        <a href="#home">Home</a>
+        <a href="#browse">Browse</a>
+        <a href="#details">Details</a>
+        <a href="#streams">Streams</a>
+        <a href="#profile" class="profile-btn">
+            Profile <img id="nav-profile-pic" src="https://via.placeholder.com/30" alt="User">
+        </a>
+    </nav>
+    
+    <div class="container">
+        <div class="profile-image">
+            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Foto de perfil">
+        </div>
+        <div class="profile-info">
+            <span class="status">Offline</span>
+            <h2 id="username">Usuario</h2>
+            <p>No has iniciado sesión. Pulsa el botón para continuar.</p>
+            <button class="button" onclick="loginWithGitHub()">Iniciar sesión con GitHub</button>
+            <div class="stats">
+                <p>Repositorios: <span id="repos">0</span></p>
+                <p>Seguidores: <span id="followers">0</span></p>
+                <p>Siguiendo: <span id="following">0</span></p>
+            </div>
+        </div>
     </div>
 
-    <div class="timer" id="timer"></div>
-
-    <button id="auth-button" class="button login-button" onclick="loginWithGitHub()">Iniciar sesión con GitHub</button>
-    <button class="button start-button" onclick="window.location.href='index.html';">Ir al inicio</button>
-</div>
-
-<div class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">↑</div>
-
-<script>
-    let startTime = localStorage.getItem('startTime') ? parseInt(localStorage.getItem('startTime')) : Date.now();
-
-    function updateTimer() {
-        let elapsed = Date.now() - startTime;
-        let minutes = Math.floor(elapsed / 60000);
-        let seconds = Math.floor((elapsed % 60000) / 1000);
-        document.getElementById("timer").textContent = `Tiempo en página: ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateTimer, 1000);
-    updateTimer();
-
-    // Guardar el tiempo cuando se recarga la página
-    window.onbeforeunload = function() {
-        localStorage.setItem('startTime', startTime);
-    };
-
-    // Función para iniciar sesión con GitHub
-    function loginWithGitHub() {
-        const clientId = "c013ca740966698c5d07b64c4a1a0a9651d3539b";
-        const redirectUri = window.location.origin + "/perfil.html";
-        const scope = "user";
-        window.location.href = `https://github.com/login/oauth/authorize?client_id=Ov23liH8n7qWd4aDdshv&redirect_uri=https://luisproxd16.github.io/callback.html&scope=user{scope}`;
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-
-    if (code) {
-        fetch(`https://tu-servidor.com/intercambio-token?code=${code}`, { method: "POST" })
-            .then(response => response.json())
-            .then(data => {
-                sessionStorage.setItem('github_token', data.access_token);
-                window.location.href = "perfil.html";
-            })
-            .catch(error => {
-                console.error('Error en la autenticación:', error);
-                document.getElementById("username").textContent = "Error en la autenticación";
-            });
-    }
-
-    const accessToken = sessionStorage.getItem('github_token');
-
-    if (accessToken) {
-        document.getElementById("auth-button").style.display = "none";
-        document.querySelector(".start-button").style.display = "block";
-
-        fetch('https://api.github.com/user', {
-            headers: { Authorization: `Bearer ${accessToken}` }
-        })
-        .then(response => {
-            if (!response.ok) throw new Error('Error en la autenticación');
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById('username').textContent = data.login || 'Usuario desconocido';
-            document.getElementById('email').textContent = data.email || 'Correo no disponible';
-            document.getElementById('profile-pic').src = data.avatar_url || 'https://via.placeholder.com/150';
-        })
-        .catch(error => {
-            console.error('Error al obtener datos:', error);
-            document.getElementById('username').textContent = 'Error al cargar datos';
-            document.getElementById('email').textContent = 'Verifique su conexión o token';
-            sessionStorage.removeItem('github_token');
-        });
-    }
-
-    window.onscroll = function() {
-        let scrollTopBtn = document.getElementById("scrollTopBtn");
-        if (document.documentElement.scrollTop > 100) {
-            scrollTopBtn.style.display = "block";
-        } else {
-            scrollTopBtn.style.display = "none";
+    <script>
+        function loginWithGitHub() {
+            // Simulación de inicio de sesión (debes reemplazar esto con tu lógica OAuth de GitHub)
+            let userData = {
+                username: "Alan Smithee",
+                avatar: "https://via.placeholder.com/150", // Reemplazar con imagen real
+                repos: 10,
+                followers: 200,
+                following: 50
+            };
+            
+            document.getElementById("username").innerText = userData.username;
+            document.getElementById("profile-pic").src = userData.avatar;
+            document.getElementById("nav-profile-pic").src = userData.avatar;
+            document.getElementById("repos").innerText = userData.repos;
+            document.getElementById("followers").innerText = userData.followers;
+            document.getElementById("following").innerText = userData.following;
         }
-    };
-
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-</script>
-
+    </script>
 </body>
 </html>
