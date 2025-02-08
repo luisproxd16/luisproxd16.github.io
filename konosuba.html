@@ -140,14 +140,23 @@
         }
 
         /* Botones para cambiar videos */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+        }
+
         .buttons button {
             padding: 12px;
-            margin: 8px;
             font-size: 18px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
             color: white;
+            flex: 1 1 calc(25% - 20px); /* 4 botones por fila en PC */
+            max-width: calc(25% - 20px);
         }
 
         .buttons button:nth-child(1) { background-color: #ff4d4d; }
@@ -163,6 +172,71 @@
         .buttons button:nth-child(11) { background-color: #4d4d4d; }
 
         .buttons button:hover { filter: brightness(1.2); }
+
+        /* Estilos para móviles */
+        @media screen and (max-width: 768px) {
+            /* Barra de navegación */
+            nav {
+                padding: 10px;
+            }
+
+            nav a.logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            nav span {
+                font-size: 18px;
+            }
+
+            nav input {
+                margin-left: 10px;
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            nav .profile {
+                padding: 5px 10px;
+                font-size: 14px;
+            }
+
+            nav .profile img {
+                width: 25px;
+                height: 25px;
+            }
+
+            /* Contenedor de carga */
+            #video-loader {
+                font-size: 20px;
+            }
+
+            #video-loader p {
+                padding: 5px 10px;
+            }
+
+            /* Banner */
+            .banner {
+                width: 90%;
+                height: 150px;
+                font-size: 24px;
+                margin: 50px auto 0;
+            }
+
+            /* Contenedor del video */
+            #video-container {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9; /* Mantener relación de aspecto */
+            }
+
+            /* Botones */
+            .buttons button {
+                flex: 1 1 calc(50% - 10px); /* 2 botones por fila en móviles */
+                max-width: calc(50% - 10px);
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -221,8 +295,17 @@
 
         function cambiarVideo(num) {
             const videos = [
-                "https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE",
-                "https://mega.nz/embed/6y4kFDqI#xxFEF-dBaWnSDWDud7navj9dqnnHhQ5qkDz-fBIrSU8"
+                "https://mega.nz/embed/Hm4iXbIQ#Q-9cyK1QW08RAcqV3uMBazf_oEPhWp1yUXGqAWWCfYE", // Video 1
+                "https://mega.nz/embed/6y4kFDqI#xxFEF-dBaWnSDWDud7navj9dqnnHhQ5qkDz-fBIrSU8", // Video 2
+                "https://mega.nz/embed/emgm1SLD#sdTf0hJ3AwnSGY0me9vUR7OufpusrHQVgDZrqkHZkUk", // Video 3
+                "https://mega.nz/embed/rvZGgYjZ#Y5gY_CrOyNmAC2lm9_6pIfLkHDDBmsyPhxTe44tkaXo", // Video 4
+                "https://mega.nz/embed/Ku4xgazb#DhyYRAbtdtxipAh4V58C-7kCN3WFODbBaEfGnfayVrY", // Video 5
+                "https://mega.nz/embed/eyhxVbgR#cHT_KD1zbg0J6QmHgtDfEoD5JcBqNzK3h3WJJg20z3k", // Video 6
+                "https://mega.nz/embed/qvZC3Q5D#yBnAMgxgpi9FSYCB47MVjrMRTzbf9ZuhzYo3ojGXs_Q", // Video 7
+                "https://mega.nz/embed/PqY1HBKa#Bw10KX5XZcVX7Yp_K1WmaTmNalNspQHy4FlZKxjn45Y", // Video 8
+                "https://mega.nz/embed/7i4kxJDI#Yt1E8HUtC_HMTUl0dEcN32ZCU89xnuaW6yHqrR2txBw", // Video 9
+                "https://mega.nz/embed/Dron2JqC#MdAHak-jz5oIF0YBMN5qpJMDB7VABju0sda9MJIWn-U", // Video 10
+                "https://mega.nz/embed/arQTnZAL#_pBMg1cE8pCg3LzYpFAwWsLQ_bWA8HlS2BTrkpwOpuc"  // OVA 1
             ];
             document.getElementById('video-frame').src = videos[num - 1];
         }
@@ -230,3 +313,199 @@
 
 </body>
 </html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Hamburguesa</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: black; /* Fondo transparente */
+            color: white; /* Texto en negro para mejor contraste */
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Logo y nombre del sitio */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .site-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        /* Ícono de hamburguesa */
+        .menu-icon {
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Menú desplegable */
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -100vw; /* Oculto por defecto */
+            width: 60vw;
+            max-width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        /* Menú activo (visible) */
+        .menu.active {
+            right: 0;
+        }
+
+        /* Enlaces del menú */
+        .menu a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 10px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff4081;
+        }
+
+        /* Botón para cerrar el menú */
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        /* Contenedor del GIF */
+        .gif-container {
+            display: none; /* Oculto por defecto */
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gif-container img {
+            width: 80%;
+            max-width: 200px;
+            border-radius: 10px;
+        }
+
+        /* Mostrar el GIF cuando el menú esté activo */
+        .menu.active .gif-container {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <!-- Logo y nombre del sitio -->
+        <div class="logo-container">
+            <img src="assets/imagenes/logo.png" alt="Logo" class="logo">
+            <span class="site-name">HanabiCine</span>
+        </div>
+
+        <!-- Ícono de hamburguesa -->
+        <button class="menu-icon" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <!-- Menú desplegable -->
+    <div class="menu" id="menu">
+        <!-- Botón para cerrar el menú -->
+        <button class="close-menu" aria-label="Cerrar menú" onclick="toggleMenu()">×</button>
+
+        <!-- Enlaces del menú -->
+        <a href="index.html">Inicio</a>
+        <a href="busador.html">Buscar</a>
+        <a href="#">xd</a>
+        <a href="perfil.html">Perfil</a>
+
+        <!-- Contenedor del GIF -->
+        <div class="gif-container">
+            <img src="assets/gifs/meme.gif" alt="GIF divertido">
+        </div>
+    </div>
+
+    <!-- Script para el menú de hamburguesa -->
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+
+            // Evitar desplazamiento cuando el menú está abierto
+            if (menu.classList.contains("active")) {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            let menu = document.getElementById("menu");
+            let menuIcon = document.querySelector('.menu-icon');
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.classList.remove("active");
+                document.body.style.overflow = "auto";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
