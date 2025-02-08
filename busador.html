@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HanabiCine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0d0d24;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Barra de navegación fija */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .site-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        /* Ícono del menú hamburguesa */
+        .menu-icon {
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Menú desplegable */
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -100vw;
+            width: 60vw;
+            max-width: 250px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.3s ease-in-out;
+        }
+
+        .menu.active {
+            right: 0;
+        }
+
+        .menu a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 10px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff4081;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        /* Estilos para el GIF */
+        .gif-container {
+            display: none;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gif-container img {
+            width: 80%;
+            max-width: 200px;
+            border-radius: 10px;
+        }
+
+        /* Mostrar el GIF cuando el menú esté activo */
+        .menu.active .gif-container {
+            display: block;
+        }
+
+        /* Ajustar contenido */
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 15px 0 25px;
+            opacity: 0.8;
+        }
+
+        /* Estilos del buscador */
+        .search-box {
+            display: flex;
+            background: #000;
+            padding: 10px;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        button {
+            background-color: #5b52ff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #4a42e0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/imagenes/logo.png" alt="Logo" class="logo">
+            <span class="site-name">HanabiCine</span>
+        </div>
+
+        <button class="menu-icon" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+
+        <div class="menu" id="menu">
+            <button class="close-menu" aria-label="Cerrar menú" onclick="toggleMenu()">×</button>
+            <a href="index.html">Inicio</a>
+            <a href="#">Buscar</a>
+            <a href="#">xd</a>
+            <a href="perfil.html">Perfil</a>
+            
+            <!-- GIF agregado aquí -->
+            <div class="gif-container">
+                <img src="assets/gifs/meme.gif" alt="GIF divertido">
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>An Attractive Search <br> For Your Website</h1>
+            <p>The Fastest Way To Find What You Need, Easily and Quickly.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Your Search">
+                <button>Search</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+
+            // Evitar desplazamiento cuando el menú está abierto
+            if (menu.classList.contains("active")) {
+                document.body.style.overflow = "hidden";
+            } else {
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
+
+</body>
+</html>
