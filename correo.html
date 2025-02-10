@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <style>
+        body {
+            background: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            width: 350px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 15px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .gallery img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            border: 2px solid white;
+            transform: scale(1.1);
+        }
+
+        #uploadInput {
+            display: none;
+        }
+
+        .upload-btn {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .auth-btn {
+            background: #ff4b2b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .auth-btn:hover {
+            background: #ff6a4d;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <img src="assets/imagenes/perfil.jpg" alt="Foto de perfil" class="profile-img" id="fotoPerfil">
+        <h2 id="nombreUsuario">Usuario</h2>
+        <p id="correoUsuario">correo@email.com</p>
+        <button class="auth-btn" id="authBtn" onclick="gestionarSesion()">Iniciar Sesión</button>
+        
+        <div class="gallery">
+            <img src="assets/imagenes/perfil1.jpg" onclick="cambiarFoto(this.src)">
+            <img src="assets/imagenes/perfil2.jpg" onclick="cambiarFoto(this.src)">
+            <img src="assets/imagenes/perfil3.jpg" onclick="cambiarFoto(this.src)">
+        </div>
+        
+        <label class="upload-btn" for="uploadInput">+ Subir Imagen</label>
+        <input type="file" id="uploadInput" accept="image/*" onchange="subirImagen(event)">
+    </div>
+
+    <script>
+        // Cargar datos almacenados
+        let nombreUsuario = localStorage.getItem("nombreUsuario");
+        let correoUsuario = localStorage.getItem("correoUsuario");
+        let fotoGuardada = localStorage.getItem("fotoPerfil");
+        let authBtn = document.getElementById("authBtn");
+
+        if (nombreUsuario) {
+            document.getElementById("nombreUsuario").textContent = nombreUsuario;
+            document.getElementById("correoUsuario").textContent = correoUsuario;
+            authBtn.textContent = "Cerrar Sesión";
+        } else {
+            authBtn.textContent = "Iniciar Sesión";
+        }
+
+        if (fotoGuardada) {
+            document.getElementById("fotoPerfil").src = fotoGuardada;
+        }
+
+        // Gestionar sesión
+        function gestionarSesion() {
+            if (localStorage.getItem("nombreUsuario")) {
+                localStorage.clear();
+                alert("👋 Sesión cerrada. Redirigiendo...");
+                window.location.href = "perfil.html"; // Redirigir al login
+            } else {
+                window.location.href = "perfil.html"; // Redirigir a iniciar sesión
+            }
+        }
+
+        function cambiarFoto(src) {
+            document.getElementById("fotoPerfil").src = src;
+            localStorage.setItem("fotoPerfil", src);
+        }
+
+        function subirImagen(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    cambiarFoto(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

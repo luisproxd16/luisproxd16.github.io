@@ -3,67 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
+    <title>Verificaci贸n de Correo</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("oAreyTYULWY3-e486"); // Public Key de EmailJS
-        })();
-
-        function enviarCorreo() {
-            var emailUsuario = document.getElementById("email").value;
-            var codigoVerificacion = Math.floor(100000 + Math.random() * 900000); // C贸digo de 6 d铆gitos
-
-            var templateParams = {
-                to_name: "Usuario",
-                codigo: codigoVerificacion,
-                reply_to: emailUsuario
-            };
-
-            emailjs.send("service_c5jcyj4", "template_quqqq7w", templateParams)
-            .then(function(response) {
-                alert("C贸digo enviado correctamente a " + emailUsuario);
-                console.log("Correo enviado con 茅xito:", response);
-            }, function(error) {
-                alert("Error al enviar el correo. Int茅ntalo de nuevo.");
-                console.log("Error:", error);
-            });
-        }
-    </script>
     <style>
+        /* Estilo General */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #181818;
-            color: white;
+            background: linear-gradient(to right, #1e1e1e, #000);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
         }
+
+        /* Contenedor Principal */
         .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
             text-align: center;
-            padding: 50px;
+            backdrop-filter: blur(10px);
+            width: 350px;
         }
-        .button {
-            background-color: #ff4081;
-            color: white;
-            padding: 10px 20px;
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* Estilo del Input */
+        input {
+            width: 100%;
+            padding: 12px;
             border: none;
             border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* Bot贸n Estilizado */
+        button {
+            background: #ff4b2b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
             cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
         }
-        .button:hover {
-            background-color: #e03570;
+
+        button:hover {
+            background: #ff6a4d;
+            transform: scale(1.05);
         }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Verificaci贸n de Correo - HanabiCine</h2>
-        <form onsubmit="event.preventDefault(); enviarCorreo();">
-            <label for="email">Correo Electr贸nico:</label>
-            <input type="email" id="email" required>
-            <button class="button" type="submit">Enviar C贸digo</button>
-        </form>
+        <h2>馃攼 Verificaci贸n de Correo</h2>
+        
+        <label for="correoUsuario">Ingresa tu correo:</label>
+        <input type="email" id="correoUsuario" placeholder="ejemplo@email.com" required>
+        <button onclick="enviarCorreo()">Enviar C贸digo</button>
     </div>
+
+    <script>
+        (function() {
+            emailjs.init("oAreyTYULWY3-e486"); // Clave p煤blica de EmailJS
+        })();
+
+        function generarCodigo() {
+            return Math.floor(100000 + Math.random() * 900000); // C贸digo aleatorio de 6 d铆gitos
+        }
+
+        function enviarCorreo() {
+            let correo = document.getElementById("correoUsuario").value;
+            if (!correo) {
+                alert("鉂?Por favor, ingresa un correo v谩lido.");
+                return;
+            }
+
+            let codigoVerificacion = generarCodigo();
+
+            emailjs.send("service_i4gl28s", "template_yo5mfzo", {
+                to_email: correo,  
+                from_name: "HanabiCine",
+                codigo: codigoVerificacion  
+            })
+            .then(function(response) {
+                alert("鉁?C贸digo enviado correctamente.");
+                localStorage.setItem("codigoVerificacion", codigoVerificacion);
+                window.location.href = "verificar.html";  // Redirige a la p谩gina de verificaci贸n
+            }, function(error) {
+                alert("鉂?Error al enviar el c贸digo: " + JSON.stringify(error));
+            });
+        }
+    </script>
 </body>
 </html>
-
